@@ -1,8 +1,8 @@
 {
-  "name": "labodz",
-  "description": "A Vue.js project",
+  "name": "portaildz",
+  "description": "Portail privé personnalisable pour les laboratoires d'analyse médicale algériens",
   "version": "1.0.0",
-  "author": "Rafik HACEB <rafik.haceb@bluekango.com>",
+  "author": "Rafik HACEB <rafikhaceb@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

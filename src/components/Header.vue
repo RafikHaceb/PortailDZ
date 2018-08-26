@@ -2,29 +2,51 @@
 <div class="header elevation-3" hidden-sm-and-down>
     <v-layout>
         <v-flex md6 x12 class="logo-center">
-            <router-link to="/">
-                <img class="logo" alt="raison sociale" :class="{smallLogo:$vuetify.breakpoint.xsOnly}" src="./../assets/logo.png">
+            <router-link to="/" class="logo" :class="{smallLogo:$vuetify.breakpoint.xsOnly}">
+                <img alt="raison sociale"
+                     :class="{smallLogo:$vuetify.breakpoint.xsOnly}"
+                     :src="profile.logo">
             </router-link>
         </v-flex>
         <v-flex md3 hidden-sm-and-down>
             <v-layout align-left column>
-                <p class="caption text-xs-left"><v-icon small>phone</v-icon> +xx xxx xx xx xx</p>
-                <p class="caption text-xs-left"><v-icon small>print</v-icon> +xx xxx xx xx xx</p>
-                <p class="caption text-xs-left"><v-icon small>email</v-icon> xxxxxx@gmail.com</p>
-                <p class="caption text-xs-left"><v-icon small>location_on</v-icon> n° rue xxxxx xxxxx , commune, wilaya</p>
+                <p class="caption text-xs-left"><v-icon small>phone</v-icon> {{ profile.phone }}</p>
+                <p class="caption text-xs-left"><v-icon small>print</v-icon> {{ profile.fax }}</p>
+                <p class="caption text-xs-left"><v-icon small>email</v-icon> {{ profile.email }}</p>
+                <p class="caption text-xs-left"><v-icon small>location_on</v-icon> {{ fullAddress }}</p>
             </v-layout>
         </v-flex>
         <v-flex md3 hidden-xs-only>
             <v-layout align-left column>
-                <p class="caption"><strong>Dimanche - Jeudi :</strong></p>
-                <p class="caption text-xs-left">08h - 12h | 13h - 17h</p>
-                <p class="caption"><strong>Samedi :</strong></p>
-                <p class="caption text-xs-left">09h - 12h</p>
+                <div v-for="timeSheet in profile.timeSheets" :key="timeSheet.name">
+                    <p class="caption"><strong>{{ timeSheet.name }} :</strong></p>
+                    <p class="caption text-xs-left">{{ timeSheet.value }}</p>
+                </div>
             </v-layout>
         </v-flex>
     </v-layout>
   </div>
 </template>
+<script>
+export default {
+    props : ['profile'],
+    computed : {
+        fullAddress: function () {
+            if (!this.profile.address.number) {
+                return '';
+            }
+            return this.profile.address.number +
+                   ' ' +
+                   this.profile.address.street +
+                   ', '
+                   + this.profile.address.town +
+                   ', '
+                   + this.profile.address.wilaya;
+        }
+    }
+}
+</script>
+
 <style scoped>
 p {
     margin-bottom: 5px; 
@@ -42,12 +64,19 @@ p {
     display: flex;
 }
 .logo {
-    height: 120px;
+    display: flex;
+}
+.logo.smallLogo {
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo img {
+    height: 100px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 20px;
 }
-.smallLogo {
+.logo img.smallLogo {
     height: 75px;
     margin-left: auto;
     margin-right: auto;

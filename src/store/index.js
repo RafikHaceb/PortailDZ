@@ -10,8 +10,8 @@ export default new Vuex.Store({
         clientProfile: null
     },
     actions: {
-        'LOAD_CLIENT_PROFILE': function ({ commit }) {
-            firebase.database().ref('clients/labo-test1').once('value').then(function (snapshot) {
+        'LOAD_CLIENT_PROFILE': function ({ commit }, client) {
+            firebase.database().ref('clients/' + client).once('value').then(function (snapshot) {
                 const clientProfile = snapshot.val();
                 commit('SET_CLIENT_PROFILE', { clientProfile });
             });

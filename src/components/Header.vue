@@ -2,7 +2,7 @@
 <div class="header elevation-3" hidden-sm-and-down>
     <v-layout>
         <v-flex md6 x12 class="logo-center">
-            <router-link to="/" class="logo" :class="{smallLogo:$vuetify.breakpoint.xsOnly}">
+            <router-link :to="'/' + this.profile.ID" class="logo" :class="{smallLogo:$vuetify.breakpoint.xsOnly}">
                 <img alt="raison sociale"
                      :class="{smallLogo:$vuetify.breakpoint.xsOnly}"
                      :src="profile.logo">

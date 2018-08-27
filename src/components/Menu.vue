@@ -21,14 +21,15 @@ export default {
   data () {
     return {
       menuItems: [
-        { name : 'ACCUEIL', icon: 'home', link: '/' },
-        { name : 'SERVICES', icon: 'list', link: '/services' },
-        { name : 'MON ESPACE', icon: 'person', link: '/mon-espace' },
-        { name : 'PRISE DE RDV', icon: 'event', link: '/rdv'  },
-        { name : 'CONTACT', icon: 'contact_phone', link: '/contact' },
+        { name : 'ACCUEIL', icon: 'home', link: '/' + this.profile.ID + '/accueil' },
+        { name : 'SERVICES', icon: 'list', link: '/' + this.profile.ID + '/services' },
+        { name : 'MON ESPACE', icon: 'person', link: '/' + this.profile.ID + '/mon-espace' },
+        { name : 'PRISE DE RDV', icon: 'event', link: '/' + this.profile.ID + '/rdv'  },
+        { name : 'CONTACT', icon: 'contact_phone', link: '/' + this.profile.ID + '/contact' },
       ]
     };
-  }
+  },
+  props : ['profile']
 }
 </script>
 

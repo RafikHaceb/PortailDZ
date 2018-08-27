@@ -20,8 +20,5 @@ new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  store,
-  mounted: function () {
-    this.$store.dispatch('LOAD_CLIENT_PROFILE')
-  }
+  store
 })

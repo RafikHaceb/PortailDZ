@@ -1,5 +1,11 @@
 <template>
-  <v-app v-if="!clientProfile">
+  <v-app v-if="clientProfile">
+    <header-cmp :profile="clientProfile"></header-cmp>
+    <menu-cmp :profile="clientProfile"></menu-cmp>
+    <main-cmp></main-cmp>
+    <footer-cmp></footer-cmp>
+  </v-app>
+  <v-app v-else>
     <v-container>
       <v-flex column md12 class="flex-full-height">
         <v-layout column class="text-md-center layout-full-height">
@@ -13,12 +19,6 @@
         </v-layout>
       </v-flex>
     </v-container>
-  </v-app>
-  <v-app v-else>
-    <header-cmp :profile="clientProfile"></header-cmp>
-    <menu-cmp :profile="clientProfile"></menu-cmp>
-    <main-cmp></main-cmp>
-    <footer-cmp></footer-cmp>
   </v-app>
 </template>
 

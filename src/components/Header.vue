@@ -56,6 +56,7 @@ p {
     max-height: 150px;
     margin-bottom: 10px;
     padding: 15px;
+    background-color: #fff;
 }
 .header .layout {
     height: 100%;

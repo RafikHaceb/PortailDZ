@@ -1,22 +1,18 @@
 <template>
-    <v-layout v-if="gallery" row wrap class="my-3">
-        <v-flex sm8 xs12>
-        <v-card>
-            <div class="carousel-container">
-            <el-carousel :interval="3000" :type="carouselType" height="300px">
-                <el-carousel-item v-for="(slide, i) in gallery" :key="i">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img :src="slide.file"
-                        :alt="slide.description ? slide.description : ''"
-                        :title="slide.description ? slide.description : ''"
-                        class="slide-image">
-                </el-card>
-                </el-carousel-item>
-            </el-carousel>
-            </div>
-        </v-card>
-        </v-flex>
-    </v-layout>
+    <v-card v-if="gallery">
+        <div class="carousel-container">
+        <el-carousel :interval="3000" :type="carouselType" height="300px">
+            <el-carousel-item v-for="(slide, i) in gallery" :key="i">
+            <el-card :body-style="{ padding: '0px' }">
+                <img :src="slide.file"
+                    :alt="slide.description ? slide.description : ''"
+                    :title="slide.description ? slide.description : ''"
+                    class="slide-image">
+            </el-card>
+            </el-carousel-item>
+        </el-carousel>
+        </div>
+    </v-card>  
 </template>
 <script>
 import { mapState } from 'vuex'

@@ -4,7 +4,7 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import { Carousel, CarouselItem, Card } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import VueFire from 'vuefire'
 
 import router from './router'
@@ -21,6 +21,9 @@ Vue.use(VueFire);
 
 firebase.initializeApp(serverConfig);
 
+Vue.filter('uppercase', function (value) {
+  return value.toUpperCase();
+});
 new Vue({
   el: '#app',
   render: h => h(App),
